@@ -10,7 +10,7 @@ var hpg = require('../index.js');
 
 describe('logger tests', function(){
 
-	describe('#log() function test', function(){
+	describe('#log() function test in return mode', function(){
 		it('should return well-formed string', function(){
 			var testVar = 'some damn test something';
 
@@ -49,6 +49,18 @@ describe('logger tests', function(){
 			strResult.should.contain('object');
 			strResult.should.contain('first');
 			strResult.should.contain('two');
+		})
+	});
+
+	describe('#log() function test in console output mode', function(){
+		it('should output well-formed string to console', function(){
+			var testVar = {
+				"name": "firs parameter",
+				"value": 42,
+				"offset": 15
+			};
+
+			hpg.log(testVar, 'test variable');
 		})
 	})
 });
