@@ -23,5 +23,13 @@ describe('tests time-related functions of common helper', function(){
 				done();
 			}, 1520);
 		})
+	});
+
+	describe('#time() function test', function(){
+		it('should return readable representation of current time for empty parameter', function(){
+			var strTime = hpg.time();
+			strTime.should.be.a('string');
+			strTime.should.contain('.');
+		})
 	})
 });
