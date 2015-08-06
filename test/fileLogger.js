@@ -5,12 +5,10 @@
 
 var hpg = require('../index.js');
 var path = require('path');
-var should = require('chai').should();
+require('chai').should();
 var fs = require('fs');
 
 var filename = path.join(__dirname, 'log', 'test.log');
-hpg.log(filename, 'filename');
-//var fl = new hpg.FileLogger(filename);
 
 var tracedVar = {
 	"propOne": 42,
@@ -28,11 +26,19 @@ function doLog(FileLogger){
 	FileLogger.log(strInfoMsg, hpg.FileLogger.levels.info);
 	FileLogger.log(strWarnMsg, hpg.FileLogger.levels.warning);
 	FileLogger.log(strErrorMsg, hpg.FileLogger.levels.error);
-};
+}
 
 describe('testing file logging:', function(){
 
 	beforeEach(function(){
+
+		if(fs.existsSync(filename)){
+			fs.unlinkSync(filename);
+		}
+
+	});
+
+	afterEach(function(){
 
 		if(fs.existsSync(filename)){
 			fs.unlinkSync(filename);

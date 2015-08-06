@@ -79,7 +79,7 @@ describe('filesystem-related tests', function(){
 		var arCorrectPaths = [
 			'./test/data/relative.test'
 			, __dirname + path.sep + 'data' + path.sep + 'absolute.test'
-			, path.join(__dirname, 'data') + 'resolved.test'
+			, path.join(__dirname, 'data', 'resolved.test')
 		];
 		
 		var testSuccessfulDeletion = function(strPath){
@@ -124,4 +124,5 @@ describe('filesystem-related tests', function(){
 		});
 
 	});
+
 });
