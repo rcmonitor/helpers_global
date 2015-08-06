@@ -57,11 +57,19 @@ describe('filesystem-related tests', function(){
 			boolCreated.should.equals(true);
 		});
 		it('should not create file in data directory with wrong path', function(){
-			hpg.ensureFileExistsSync(oPaths.wrong);
+
+			var oErroneous = {};
+
+			hpg.ensureFileExistsSync(oPaths.wrong, 'a', oErroneous);
 
 			var boolCreated = fs.existsSync(oPaths.wrong);
 			boolCreated.should.be.a('boolean');
 			boolCreated.should.equals(false);
+
+			oErroneous.should.have.property('errors');
+			oErroneous.errors.should.be.an('array');
+			oErroneous.errors[0].should.be.a('string');
+			oErroneous.errors[0].should.not.be.empty;
 		});
 	});
 
