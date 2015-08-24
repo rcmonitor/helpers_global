@@ -1,6 +1,6 @@
 {
   "name": "helpers-global",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "most common helpers for javascript and node.js development",
   "main": "index.js",
   "scripts": {
