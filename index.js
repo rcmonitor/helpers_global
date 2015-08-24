@@ -20,6 +20,7 @@ exports.time = time.time;
 exports.diff = time.diff;
 exports.getTime = time.getTime;
 exports.getType = types.getType;
+exports.isEmpty = types.isEmpty;
 exports.ensureFileExistsSync = files.ensureFileExistsSync;
 exports.ensureFileNotExistsSync = files.ensureFileNotExistsSync;
 exports.ensureDirectoryExistsSync = files.ensureDirectoryExistsSync;
