@@ -10,6 +10,7 @@ var time = require('./lib/time');
 var logger = require('./lib/logger');
 var string = require('./lib/string');
 var object = require('./lib/object');
+var stream = require('./lib/stream');
 
 var Environment = require('./lib/environment');
 var FileLogger = require('./lib/fileLogger');
@@ -28,6 +29,7 @@ exports.extend = object.extend;
 exports.ensureFileExistsSync = files.ensureFileExistsSync;
 exports.ensureFileNotExistsSync = files.ensureFileNotExistsSync;
 exports.ensureDirectoryExistsSync = files.ensureDirectoryExistsSync;
+exports.createEmptyReadableStream = stream.createEmptyReadableStream;
 
 exports.FileLogger = FileLogger;
 exports.Environment = Environment;
