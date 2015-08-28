@@ -9,6 +9,7 @@ var types = require('./lib/types');
 var time = require('./lib/time');
 var logger = require('./lib/logger');
 var string = require('./lib/string');
+var object = require('./lib/object');
 
 var Environment = require('./lib/environment');
 var FileLogger = require('./lib/fileLogger');
@@ -23,6 +24,7 @@ exports.getTime = time.getTime;
 exports.getType = types.getType;
 exports.isEmpty = types.isEmpty;
 exports.ucfirst = string.ucfirst;
+exports.extend = object.extend;
 exports.ensureFileExistsSync = files.ensureFileExistsSync;
 exports.ensureFileNotExistsSync = files.ensureFileNotExistsSync;
 exports.ensureDirectoryExistsSync = files.ensureDirectoryExistsSync;
