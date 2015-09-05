@@ -63,6 +63,8 @@ describe('testing file logging:', function(){
 			loggedStrings.should.contain('info: ' + strInfoMsg);
 			loggedStrings.should.contain('warning: ' + strWarnMsg);
 			loggedStrings.should.contain('error: ' + strErrorMsg);
+
+//			console.log(loggedStrings);
 		});
 
 		it('should only log info, warning and error strings from info level', function(){

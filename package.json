@@ -1,6 +1,6 @@
 {
   "name": "helpers-global",
-  "version": "2.10.0",
+  "version": "2.11.0",
   "description": "most common helpers for javascript and node.js development",
   "main": "index.js",
   "scripts": {
@@ -24,5 +24,7 @@
     "chai": "~1.10.0",
     "mocha": "~2.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "traceback": "^0.3.1"
+  }
 }

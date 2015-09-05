@@ -43,12 +43,19 @@ describe('logger tests', function(){
 				"second": 'two'
 			};
 
-			strResult = hpg.log(testVar, 'test variable', true);
+			var strResult = hpg.log(testVar, 'test variable', true);
 
 			strResult.should.contain('test variable');
 			strResult.should.contain('object');
 			strResult.should.contain('first');
 			strResult.should.contain('two');
+		});
+
+		it('should log a backtrace string', function(){
+			var arSome = [1, 'any'];
+
+			var strResult = hpg.log(arSome, 'test array', true, true);
+			console.log(strResult);
 		})
 	});
 
@@ -62,5 +69,6 @@ describe('logger tests', function(){
 
 			hpg.log(testVar, 'test variable');
 		})
-	})
+	});
+
 });

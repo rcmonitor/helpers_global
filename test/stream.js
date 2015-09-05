@@ -3,7 +3,9 @@
  * on 28.08.2015.
  */
 
-require('chai').should();
+var chai = require('chai');
+chai.should();
+var expect = chai.expect;
 
 var hpg = require('../index');
 
@@ -15,10 +17,22 @@ describe('stream-related tests', function(){
 
 		var strExpected = "some damn test string";
 
-		sStream.on('readable', function(){
-			var str = sStream.read().toString();
+		var intChunkOffset = 0;
 
-			str.should.equals(strExpected);
+		sStream.on('readable', function(){
+
+			intChunkOffset ++;
+
+			var chunk = sStream.read();
+			if(chunk){
+				chunk = chunk.toString();
+			}
+
+			if(intChunkOffset == 1){
+				chunk.should.equals(strExpected);
+			}else if(intChunkOffset == 2){
+				expect(chunk).to.be.null;
+			}
 		});
 
 		it('should create readable stream', function(fCallback){
