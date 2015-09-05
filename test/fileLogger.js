@@ -57,12 +57,15 @@ describe('testing file logging:', function(){
 
 			var loggedStrings = fs.readFileSync(filename, {"encoding": 'utf8'});
 
-			loggedStrings.should.contain('trace: ');
+			loggedStrings.should.contain('trace: test/fileLogger.js: ');
 			loggedStrings.should.contain(strTraceMsg);
 			loggedStrings.should.contain('propTwo');
-			loggedStrings.should.contain('info: ' + strInfoMsg);
-			loggedStrings.should.contain('warning: ' + strWarnMsg);
-			loggedStrings.should.contain('error: ' + strErrorMsg);
+			loggedStrings.should.contain('info: test/fileLogger.js: ');
+			loggedStrings.should.contain(strInfoMsg);
+			loggedStrings.should.contain('warning: test/fileLogger.js: ');
+			loggedStrings.should.contain(strWarnMsg);
+			loggedStrings.should.contain('error: test/fileLogger.js: ');
+			loggedStrings.should.contain(strErrorMsg);
 
 //			console.log(loggedStrings);
 		});
