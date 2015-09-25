@@ -11,22 +11,21 @@ var tErroneous = hpg.tErroneous;
 
 describe('trait', function(){
 
+	class Some{
+		constructor(data){
+			this.data = data;
+		}
+	}
+
+	Some.prototype.doSome = (name, anyParam) => {this.data[name] = anyParam;};
+
+	Some.prototype.doMoar  = () => this.data;
+
 	describe('tErroneous', function(){
 
-		class Some{
-			constructor(data){
-				this.data = data;
-			}
-		}
-
-		Some.prototype.doSome = (name, anyParam) => {this.data[name] = anyParam;};
-
-		Some.prototype.doMoar  = () => this.data;
-
-		var oSome = new Some({"first": "string value"});
-		tErroneous.useBy(oSome);
-
 		it('should have methods of erroneous trait', function(){
+			var oSome = new Some({"first": "string value"});
+			tErroneous.useBy(oSome);
 
 			oSome.should.have.property('addError');
 			oSome.should.have.property('hasError');
@@ -37,6 +36,9 @@ describe('trait', function(){
 		});
 
 		it('should add errors', function(){
+			var oSome = new Some({"first": "string value"});
+			tErroneous.useBy(oSome);
+
 			oSome.addError('first error string');
 			oSome.addError(['second error string', 'third error string']);
 			oSome.addError(Error('fourth error string'));
@@ -52,6 +54,41 @@ describe('trait', function(){
 				, 'third error string'
 				, 'fourth error string'
 			])
+		});
+
+		it('how to add trait to class instead of object', function(){
+			tErroneous.useBy(Some);
+			var oSome = new Some({"first": "string"});
+
+			oSome.addError('first error');
+			var boolError = oSome.hasError();
+			boolError.should.be.true;
+		});
+	});
+
+	describe('another take to behave class', function(){
+
+		var extend = function(someClass, functionName, someFunction){
+
+			var strType = hpg.getType(someClass);
+			strType.should.equals('function');
+
+			someClass.prototype[functionName] = someFunction;
+		};
+
+		it('should extend class with given function', function(){
+
+			extend(Some, 'setError', function(error){
+				this.errors = [];
+				this.errors.push(error);
+			});
+
+			var oSome = new Some({"any": "data"});
+			oSome.setError('first error');
+			oSome.errors.should.be.an('array');
+			oSome.errors.should.have.length(1);
+			oSome.errors.should.deep.equals(['first error']);
 		})
+
 	})
 });
