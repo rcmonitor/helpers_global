@@ -16,6 +16,8 @@ var Environment = require('./lib/environment');
 var FileLogger = require('./lib/fileLogger');
 var Configurator = require('./lib/configurator');
 var ParameterObject = require('./lib/parameterObject');
+var Trait = require('./lib/trait');
+var tErroneous = require('./lib/tErroneous');
 
 
 exports.log = logger.log;
@@ -35,4 +37,5 @@ exports.FileLogger = FileLogger;
 exports.Environment = Environment;
 exports.Configurator = Configurator;
 exports.ParameterObject = ParameterObject;
-
+exports.Trait = Trait;
+exports.tErroneous = tErroneous;
