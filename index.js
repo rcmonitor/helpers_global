@@ -19,6 +19,7 @@ var ParameterObject = require('./lib/parameterObject');
 var Trait = require('./lib/trait');
 var tErroneous = require('./lib/tErroneous');
 
+var registerExitHandler = require('./lib/shutdown');
 
 exports.log = logger.log;
 exports.time = time.time;
@@ -32,6 +33,7 @@ exports.ensureFileExistsSync = files.ensureFileExistsSync;
 exports.ensureFileNotExistsSync = files.ensureFileNotExistsSync;
 exports.ensureDirectoryExistsSync = files.ensureDirectoryExistsSync;
 exports.createEmptyReadableStream = stream.createEmptyReadableStream;
+exports.registerExitHandler = registerExitHandler;
 
 exports.FileLogger = FileLogger;
 exports.Environment = Environment;
