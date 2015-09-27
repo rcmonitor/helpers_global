@@ -25,6 +25,7 @@ exports.log = logger.log;
 exports.time = time.time;
 exports.diff = time.diff;
 exports.getTime = time.getTime;
+exports.dateTime = time.dateTime;
 exports.getType = types.getType;
 exports.isEmpty = types.isEmpty;
 exports.ucfirst = string.ucfirst;
