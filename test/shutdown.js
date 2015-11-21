@@ -29,7 +29,7 @@ function executeBeforeShutdown(oBeforeShutdown){
 
 	for(let strFunctionName in oBeforeShutdown){
 
-		console.log('appying ' + strFunctionName);
+		console.log('applying ' + strFunctionName);
 
 		oBeforeShutdown[strFunctionName].object[strFunctionName].apply(
 			oBeforeShutdown[strFunctionName].object

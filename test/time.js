@@ -30,6 +30,16 @@ describe('tests time-related functions of common helper', function(){
 			var strTime = hpg.time();
 			strTime.should.be.a('string');
 			strTime.should.contain('.');
+			strTime.should.have.length(14);
+		})
+	});
+
+
+	describe('#dateTime() function test', function(){
+		it('should have correct format', function(){
+			var strTime = hpg.dateTime();
+
+			strTime.should.match(/^[\d]{4}\/[\d]{2}\/[\d]{2} [\d]{2}:[\d]{2}:[\d]{2}\.[\d]{3}$/);
 		})
 	})
 });

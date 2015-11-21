@@ -41,34 +41,13 @@ describe('testing file logging:', function(){
 
 	afterEach(function(){
 
-		if(fs.existsSync(filename)){
-			fs.unlinkSync(filename);
-		}
+//		if(fs.existsSync(filename)){
+//			fs.unlinkSync(filename);
+//		}
 
 	});
 
 	describe('#log() function of FileLogger class', function(){
-		it('should log trace, info, warning and error strings from trace level', function(){
-
-			var fl = new FileLogger(filename, FileLogger.levels.trace);
-
-			doLog(fl);
-			fl.close();
-
-			var loggedStrings = fs.readFileSync(filename, {"encoding": 'utf8'});
-
-			loggedStrings.should.contain('trace: test/fileLogger.js: ');
-			loggedStrings.should.contain(strTraceMsg);
-			loggedStrings.should.contain('propTwo');
-			loggedStrings.should.contain('info: test/fileLogger.js: ');
-			loggedStrings.should.contain(strInfoMsg);
-			loggedStrings.should.contain('warning: test/fileLogger.js: ');
-			loggedStrings.should.contain(strWarnMsg);
-			loggedStrings.should.contain('error: test/fileLogger.js: ');
-			loggedStrings.should.contain(strErrorMsg);
-
-//			console.log(loggedStrings);
-		});
 
 		it('should only log info, warning and error strings from info level', function(){
 
@@ -146,6 +125,28 @@ describe('testing file logging:', function(){
 			strError = fl.log(strMsg, FileLogger.levels.error);
 			strError.should.be.a('string');
 			strError.should.contain('no such file or directory');
+		});
+
+
+		it('should log trace, info, warning and error strings from trace level', function(){
+
+			var fl = new FileLogger(filename, FileLogger.levels.trace);
+
+			doLog(fl);
+			fl.close();
+
+			var loggedStrings = fs.readFileSync(filename, {"encoding": 'utf8'});
+
+			loggedStrings.should.contain('trace: test/fileLogger.js: ');
+			loggedStrings.should.contain(strTraceMsg);
+			loggedStrings.should.contain('propTwo');
+			loggedStrings.should.contain('info: test/fileLogger.js: ');
+			loggedStrings.should.contain(strInfoMsg);
+			loggedStrings.should.contain('warning: test/fileLogger.js: ');
+			loggedStrings.should.contain(strWarnMsg);
+			loggedStrings.should.contain('error: test/fileLogger.js: ');
+			loggedStrings.should.contain(strErrorMsg);
+
 		});
 	})
 });
